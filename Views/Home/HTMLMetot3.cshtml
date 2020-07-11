@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "HTMLMetot3";
+}
+
+<h2>HTMLMetot3</h2>
+
+<h2>Baslangic</h2>
+@Html.ActionLink("Baslangic Sayfasına Git!", "Baslangic")
+<br />
+@Html.ActionLink("RazorSyntax Sayfasına Git!", "RazorSyntax")
+<br />
+@Html.ActionLink("HTMLHelpers Sayfasına Git!", "HTMLHelpers")
+<br />
+@Html.ActionLink("HTMLMetot Sayfasına Git!", "HTMLMetot")
+<br />
+@Html.ActionLink("HTMLMetot2 Sayfasına Git!", "HTMLMetot2")
+<br />
+@Html.ActionLink("HTMLMetot3 Sayfasına Git!", "HTMLMetot3")
+<br />
+
+
+
+<p> HttpUtility yardımcı metotları göreceğiz:</p>
+<p>Elimizde diyelim HTML kodu var:</p>
+<pre>
+HttpUtility.HtmlEncode("p> b> Bu bölümde HttpUtility metotlarına bakacağız. Elimizde diyelim HTML kodu var./b> /p>")
+</pre>
+<p><b>Çıktı:</b></p>
+@HttpUtility.HtmlEncode("<p><b> Bu bölümde HttpUtility metotlarına bakacağız. Elimizde diyelim HTML kodu var.</b></p> ")
+
+<p>Şimdi tam tersini yapalım Encode edilmiş bir kodu Decode ederek baştan yazalım.</p>
+<pre>
+HttpUtility.HtmlDecode("&lt;p&gt;&lt;b&gt; Bu b&#246;l&#252;mde HttpUtility metotlarına bakacağız. Elimizde diyelim HTML kodu var.&lt;/b&gt;&lt;/p&gt;")
+</pre>
+<p><b>Çıktı:</b></p>
+@HttpUtility.HtmlDecode("&lt;p&gt;&lt;b&gt; Bu b&#246;l&#252;mde HttpUtility metotlarına bakacağız. Elimizde diyelim HTML kodu var.&lt;/b&gt;&lt;/p&gt;")
+
+<p>Şimdi ise yeni bir HTML.Raw metodu ile HTML dosyasının içine yazmamızı sağlayan kodu göreceğiz.</p>
+<pre>
+Html.Raw("p>b> Bu bölümde HttpUtility metotlarına bakacağız. Elimizde diyelim HTML kodu var./b>/p>")
+</pre>
+<p><b>Çıktı:</b></p>
+@Html.Raw("<p><b> Bu bölümde HttpUtility metotlarına bakacağız. Elimizde diyelim HTML kodu var.</b></p>")
+
+<p>Aynı işlemleri URL için de yapılabilir.</p>
+<pre>
+HttpUtility.UrlEncode("http://www.github.com.tr")
+
+HttpUtility.UrlDecode("http%3a%2f%2fwww.github.com.tr")
+
+</pre>
+
+@HttpUtility.UrlEncode("http://www.github.com.tr")
+<br />
+@HttpUtility.UrlDecode("http%3a%2f%2fwww.github.com.tr")
+<br />
+
+
+<p>Html.Raw için ekstra kod:</p>
+<pre>
+Html.Raw("script type='text/javascript'>alert('Html.Raw Metodu ile Eklenebilecek başka kodlarımız var ise herhangi bir dilde HTML dosyamıza eklememizi sağlar. Örneğin bu kod ile Javascript Alert özelliği kullanarak sizlere gönderilmiştir.');/script>")
+Html.Raw("style> h2 { color: aqua;}/style>")
+</pre>
+@Html.Raw("<script type='text/javascript'>alert('Html.Raw Metodu ile Eklenebilecek başka kodlarımız var ise herhangi bir dilde HTML dosyamıza eklememizi sağlar. Örneğin bu kod ile Javascript Alert özelliği kullanarak sizlere gönderilmiştir.'); </script>")
+
+@Html.Raw("<style>h2 {color:aqua;}</style>")
