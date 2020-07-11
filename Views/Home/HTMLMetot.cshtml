@@ -1,0 +1,124 @@
+﻿@using Zenn_Razor_HTML.Library
+@{
+    ViewBag.Title = "HTMLMetot";
+}
+
+<h2>HTMLMetot</h2>
+@Html.ActionLink("Baslangic Sayfasına Git!", "Baslangic")
+<br />
+@Html.ActionLink("RazorSyntax Sayfasına Git!", "RazorSyntax")
+<br />
+@Html.ActionLink("HTMLHelpers Sayfasına Git!", "HTMLHelpers")
+<br />
+@Html.ActionLink("HTMLMetot Sayfasına Git!", "HTMLMetot")
+<br />
+@Html.ActionLink("HTMLMetot2 Sayfasına Git!", "HTMLMetot2")
+<br />
+@Html.ActionLink("HTMLMetot3 Sayfasına Git!", "HTMLMetot3")
+<br />
+<hr />
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>
+
+    </title>
+</head>
+<body>
+    <div>
+        <p>
+            HTML Metotlarına gelecek olursak "HTML." eklentilerine kendi sınıfımızı oluşturmak adına farklı metotlar ekleyebilir daha sonrasında ise bu metotları kullanabilir hale nasıl getireceğimizi
+            göreceğiz.
+        </p>
+        <p>
+            Neden böyle bir şeye ihtiyacımız var dersek HTML in yardımcı metotlarında bazen ihtiyacımızı karşılayacak eklentilerin olmadığını görebiliriz bu nedenle kendimize özgü ve ihtiyacımızı
+            karşılayacak yeni eklentiler ekler isek daha hızlı bir şekilde geliştirme aşamasına katkıda bulunabiliriz.
+        </p>
+        <p>
+            Öncelikle başlamamız gereken kısım farklı kodları görmekten geçiyor. İki çeşit eklenti metot yapmaya çalışacağız. Bu yüzden yine klasik başlangıcımız bir controller oluşturduktan sonra
+            boş bir html görünümü oluşturuyoruz.
+        </p>
+        <p>Ardından ihtiyacımızı belirleyip nasıl bir metot yazacağımızı düşünüyoruz. Bizim ihtiyacımız klasik bir "button" yapısı.</p>
+        <pre>
+ public static class MyExtensions
+    {
+        public static MvcHtmlString Button(this HtmlHelper helper, string id ="defaultid", ButtonType typ=ButtonType.button, string text="defaultext")
+        {
+            string html =string.Format( "button id='{0}' name='{0}' type='{1}'>{2} /button>",id,typ.ToString(),text);
+
+            return MvcHtmlString.Create(html);
+        }
+        public static MvcHtmlString Button(this HtmlHelper helper, string id = "defaultid", string cssClass="",ButtonType typ = ButtonType.button, string text = "defaultext")
+        {
+           TagBuilder tag = new TagBuilder("button");
+            tag.AddCssClass(cssClass);
+            tag.GenerateId(id);
+            tag.SetInnerText(text);
+            tag.Attributes.Add(new KeyValuePair string,string>("type", typ.ToString()));
+            tag.Attributes.Add(new KeyValuePair string, string>("name", id));
+            return MvcHtmlString.Create(tag.ToString());
+
+        }
+        public enum ButtonType
+        {
+            button=0,
+            submit=1,
+            reset=2
+
+        }
+    }
+</pre>
+        <p>
+            Yukarıda gördüğünüz kodları solution explorer kısmına yeni bir dosya açıp adına "Library" dedikten sonra sağ tık -> Add -> Class işlemini
+            gerçekleştirdikten sonra sınıfımızın içine yazdığımız kodları görmekteyiz.
+        </p>
+        <p>Aşağıdaki çıktıyı elde ediyoruz.</p>
+        <p><b>Çıktı:</b></p>
+        @Html.Button("btnOK1", MyExtensions.ButtonType.button, "gönder")<br />
+        @Html.Button("btnOK2", MyExtensions.ButtonType.button, "Gönder")<br />
+
+        <p>Yukarıda bulunan kodda iki farklı button kodu olduğunu görmekteyiz. "Tagbuilder" olarak oluşturulan butonun çıktısına ise aşağıdan ulaşabilirsiniz:</p>
+        <p>"Tagbuilder" Kodu</p>
+        <pre>
+public static MvcHtmlString Button(this HtmlHelper helper, string id = "defaultid", string cssClass="",ButtonType typ = ButtonType.button, string text = "defaultext")
+        {
+           TagBuilder tag = new TagBuilder("button");
+            tag.AddCssClass(cssClass);
+            tag.GenerateId(id);
+            tag.SetInnerText(text);
+            tag.Attributes.Add(new KeyValuePair string,string>("type", typ.ToString()));
+            tag.Attributes.Add(new KeyValuePair string, string>("name", id));
+            return MvcHtmlString.Create(tag.ToString());
+
+        }
+</pre>
+        <p><b>Çıktı:</b></p>
+        @Html.Button("btnOK3", "btn btn-success", MyExtensions.ButtonType.submit, "iptal")
+        <p><b>Çağırma Kodu</b></p>
+        <pre>
+        Html.Button("btnOK1", MyExtensions.ButtonType.button, "gönder")
+        Html.Button("btnOK2", MyExtensions.ButtonType.button, "Gönder")
+        Html.Button("btnOK3", "btn btn-success", MyExtensions.ButtonType.submit, "iptal")
+       </pre>
+
+
+        <p>Yeni metot kodlarına aşağıdan ulaşabilirsiniz:</p>
+        <pre>
+public static MvcHtmlString Paragraf(this HtmlHelper helper, string id = "defaultid",int borderSize=3,string borderType="solid", Func object,System.Web.WebPages.HelperResult>template=null)
+        {
+            TagBuilder tag = new TagBuilder("paragraf");
+            string html = string.Format("p id='{0}' name='{0}' style='border-width:{1}px;border-style:{2}'> {3}  /p>", id, borderSize, borderType, template.Invoke(null));
+
+            return MvcHtmlString.Create(html);
+
+        }
+</pre>
+        <p>Kodun çıktısına aşağıdan ulaşılabilir:</p>
+        <p><b>Çıktı:</b></p>
+
+        @Html.Paragraf("p1", 4, "dashed", @<text> <b style='color:red'>incidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.</b></text>)
+    </div>
+</body>
+</html>

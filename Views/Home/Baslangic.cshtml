@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Baslangic";
+}
+
+<h2>Baslangic</h2>
+@Html.ActionLink("Baslangic Sayfasına Git!", "Baslangic")
+<br />
+@Html.ActionLink("RazorSyntax Sayfasına Git!", "RazorSyntax")
+<br />
+@Html.ActionLink("HTMLHelpers Sayfasına Git!", "HTMLHelpers")
+<br />
+@Html.ActionLink("HTMLMetot Sayfasına Git!", "HTMLMetot")
+<br />
+@Html.ActionLink("HTMLMetot2 Sayfasına Git!", "HTMLMetot2")
+<br />
+@Html.ActionLink("HTMLMetot3 Sayfasına Git!", "HTMLMetot3")
+<br />
+<hr />
+@{
+    string ad = "Melih";
+    string soyad = "Akköse";
+    string adsoyad = ad + " " + soyad;
+
+    int toplam = 0;
+    for (int i = 0; i <= 10; i++)
+    {
+        toplam = toplam + i;
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+
+        toplam = i;
+    }
+
+    int a = 10, b = 100, c = 23;
+
+
+    int sonuc = a + b + c;
+
+    <ul>
+        <li>
+            <b>@ad + @soyad</b>
+        </li>
+    </ul>
+    @*  RAZOR İÇİN KARŞI TARAFTAN GÖRÜNMEYEN AÇIKLAMA SATIRI  *@
+}
+
+@ad
+<br />
+@soyad
+<br />
+<b>@adsoyad</b>
+
+<p>1 den 10 a kadar olan sayıların toplamı: @toplam</p>
+
+<p>üstteki kodda for döngüsü arka tarafta çalıştırılmış ve sonuç ekrana bastırılmak üzere yazılmıştır</p>
+
+<p>C# tarafında tanımlanmış değişkenlerin toplamı: a= @a, b=@b , c=@c  Toplamları: @a+@b+@c=@sonuc</p>
+
+<p>özet olarak sizle anlatmak istediğim kısacası C# üzerinde yazılan kodların hMTML ile entegre edebilir ve C# ile daha güçlü bir internet sitesi kodlanabilir.</p>
+<p> elimizdeki c# değişkenleri:</p>
+<pre>
+string ad = "Melih";
+string soyad = "Akköse";
+string adsoyad = ad + " " + soyad;
+
+int toplam = 0;
+for(int i=0;i<=10;i++)
+    {
+        toplam = toplam+i;
+    }
+
+for(int i=0;i "<"10;i++) 
+{
+toplam=i;
+}
+int a=10, b=100,c =23;
+int sonuc=a + b + c;
+</pre>
+
+<p>Değişkenler ile işlemlerde: @ad , @soyad "At Sign" kullanılarak değişkenlerin adları "At Sign"Ad veya soyad gibi yapılır. ayrıca değişkenleri genel başka değişkene atayıp @sonuc =Sonuc gösterilebilir. </p>
+
+<!-- BU SATIRLAR KULLANICI TARAFINDAN HTML DOSYA KAYNAĞINDAN GÖRÜNTÜLENEBİLİRKEN RAZOR İÇİN YAZILAN AÇIKLAMA SATIRLARI GÖZÜKMEZ.
+    TEST ETMEK İSTERSENİZ UYGULAMAYI BAŞLATIP SAYFA KAYNAĞI GÖRÜNTÜLEYE BASARAK BU İŞLEMİ GERÇEKLEŞTİREBİLİRSİNİZ.-->

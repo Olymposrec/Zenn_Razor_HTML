@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "HTMLMetot2";
+}
+
+<h2>HTMLMetot2</h2>
+@Html.ActionLink("Baslangic Sayfasına Git!", "Baslangic")
+<br />
+@Html.ActionLink("RazorSyntax Sayfasına Git!", "RazorSyntax")
+<br />
+@Html.ActionLink("HTMLHelpers Sayfasına Git!", "HTMLHelpers")
+<br />
+@Html.ActionLink("HTMLMetot Sayfasına Git!", "HTMLMetot")
+<br />
+@Html.ActionLink("HTMLMetot2 Sayfasına Git!", "HTMLMetot2")
+<br />
+@Html.ActionLink("HTMLMetot3 Sayfasına Git!", "HTMLMetot3")
+<br />
+<hr />
+
+<p>Bu kısımda  URL helperlara göz atacağız.</p>
+
+<a id="link1" href="@Url.Action("HTMLMetot2","Home",null)">Sayfayı Yenile!</a>
+<br />
+<a id="link1" href="@Url.Action("Baslangic","Home",null)"> Başlangıç Sayfasına git!</a>
+<br />
+<a id="link1" href="/Home/Baslangic"> Başlangıç Sayfasına git! </a>
+<br />
+
+<p>Evet yeni url helper ile oluşturduğumuz linkler yukarıda yer almaktadır. Elimizde bulunan üç farklı link oluşturma kodunu aşağıya paylaşıyorum farkı kendi gözlerinizle görün.</p>
+
+<p><b>Çıktı:</b></p>
+<pre>
+
+Html.ActionLink("Baslangic Sayfasına Git!", "Baslangic") -> HTML HELPERS
+a id="link1" href="Url.Action("HTMLMetot2","Home",null)">Sayfayı Yenile!  /a>
+a id="link1" href="Url.Action("Baslangic","Home",null)"> Başlangıç Sayfasına git! /a>
+a id="link1" href="/Home/Baslangic"> Başlangıç Sayfasına git! /a>
+</pre>
+
+
+<p>Yukarıda kodlarda da belirttiğimiz gibi bir çok farklı URL oluşturma kodunu sizler ile paylaştık. Url.Action, Url.Content veya direkt HTML kodları href="#" mantığı ile</p>
+
+<p>Url.Content Mantığına ufak değinelim sanırım ondan örnek vermemişiz.</p>
+
+@Url.Action("HTMLMetot2")
+<br />
+@Url.Content("~/Home/HTMLMetot2")
+<br />
+@Url.Encode("~/Home/HTMLMetot2?arama=Melih Akköse")
+<br />
+
+<p><b>KODLAR:</b></p>
+<pre>
+Url.Action("HTMLMetot2") 
+Url.Content("~/Home/HTMLMetot2") -> sanal olarak ~ işareti ile content oluşturduk
+Url.Encode("~/Home/HTMLMetot2?arama=Melih Akköse") -> yukarıda çıktıyı görmektesiniz özel karakterleri encode eden kod
+
+</pre>
+

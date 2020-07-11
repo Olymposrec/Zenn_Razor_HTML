@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "RazorSyntax";
+}
+
+<h2>RazorSyntax</h2>
+
+<h3>RAZOR SYNTAX Yazımı Örnekleri Ve Kodları</h3>
+@Html.ActionLink("Baslangic Sayfasına Git!", "Baslangic")
+<br />
+@Html.ActionLink("RazorSyntax Sayfasına Git!", "RazorSyntax")
+<br />
+@Html.ActionLink("HTMLHelpers Sayfasına Git!", "HTMLHelpers")
+<br />
+@Html.ActionLink("HTMLMetot Sayfasına Git!", "HTMLMetot")
+<br />
+@Html.ActionLink("HTMLMetot2 Sayfasına Git!", "HTMLMetot2")
+<br />
+@Html.ActionLink("HTMLMetot3 Sayfasına Git!", "HTMLMetot3")
+<br />
+<hr />
+<pre>
+string[] iller =new string[5] {"Ankara","İzmir","İstanbul","Antalya","Muğla"};
+ 
+ul
+        foreach (string il in iller)
+        {
+            if(il=="İzmir")
+            {
+b  p İzmir Büyükşehir Belediyesine Hoşgeldiniz!  p   b 
+            }
+li 
+            il br 
+
+        li
+ 
+        }
+    ul
+</pre>
+
+<h6><b>ÇIKTI:</h6></b>
+
+@{
+
+    string[] iller = new string[5] { "Ankara", "İzmir", "İstanbul", "Antalya", "Muğla" };
+
+    <ul>
+        @foreach (string il in iller)
+        {
+            if (il == "İzmir")
+            {
+                <b><p>İzmir Büyükşehir Belediyesine Hoşgeldiniz!</p></b>
+            }
+            <li>
+                @il <br />
+            </li>
+
+        }
+    </ul>
+
+
+
+}
+<pre>//Yukarıdaki işlemi gerçekleştirmek için yazılan koda aşağıdan ulaşabilirsiniz:
+for (int i = 1; i < 10; i++)
+    {
+        i;
+        if(i%2==0)
+        {
+p>i Sayısı Çifttir. /p>
+        }
+        else
+        {
+p>i Sayısı Tektir. /p>
+        }
+    }
+</pre>
+
+<h6><b>ÇIKTI:</h6></b>
+@{
+    <p>1 DEN 10 A kadar olan sayıları ekrana bastırmak: Çift veya Tek Olanları ayırmak</p>
+    for (int i = 1; i < 11; i++)
+    {
+
+        if (i % 2 == 0)
+        {
+            <p>@i Sayısı Çifttir. </p>
+        }
+        else
+        {
+            <p>@i Sayısı Tektir.</p>
+        }
+    }
+}
+
